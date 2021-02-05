@@ -1,4 +1,4 @@
-<ng-container *ngIf='carritoActivo == false else Carrito'>
+<div class="container" *ngIf='carritoActivo == false else Carrito'>
     <div *ngFor="let plan of planes | filtroNombre: filtro, index as i">
         <h2>
             {{plan.nombre}}
@@ -10,18 +10,23 @@
                 {{periodo.periodo}} meses por {{periodo.valor | currency}}
             </option>
         </select>
-        <button *ngIf="selected[i]" (click)="agregar(i)" >Agregar al carrito</button>
+        <button *ngIf="selected[i] else agregarDisabled" (click)="agregar(i)" >Agregar al carrito</button>
+        <ng-template #agregarDisabled>
+            <button disabled >Agregar al carrito</button>
+        </ng-template>
     </div>
-</ng-container>
+</div>
 
 <ng-template #Carrito>
-    <div *ngFor="let plan of carrito | filtroNombre: filtro, index as i">
-        <h2>
-            {{plan.nombre}}
-        </h2>
-        <p>
-            {{plan.periodo}} meses por {{plan.valor | currency}}
-        </p>
-        <button (click)="eliminarItem(i)" >Eliminar</button>
+    <div class="container">
+        <div *ngFor="let plan of carrito | filtroNombre: filtro, index as i">
+            <h2>
+                {{plan.nombre}}
+            </h2>
+            <p>
+                {{plan.periodo}} meses por {{plan.valor | currency}}
+            </p>
+            <button (click)="eliminarItem(i)" >Eliminar</button>
+        </div>
     </div>
-</ng-template>
+    </ng-template>

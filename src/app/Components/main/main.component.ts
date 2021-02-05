@@ -15,7 +15,6 @@ export class MainComponent implements OnInit {
   planes: any;
   carrito: any;
   selected: any = {};
-
   constructor(
     private planesservice: PlanesService
   ) {
@@ -24,7 +23,9 @@ export class MainComponent implements OnInit {
     });
     this.planesservice.getCarrito().subscribe((plans: { response: any; }) => {
       this.carrito = plans.response;
-      console.log(plans);
+      this.carrito.forEach(() => {
+        this.sumarAlCarrito.emit();
+      });
     });
   }
 

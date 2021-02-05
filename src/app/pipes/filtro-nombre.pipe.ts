@@ -15,7 +15,7 @@ export class FiltroNombrePipe implements PipeTransform {
     return items.filter(item => this.quitarAcentos(item.nombre.toUpperCase()).indexOf(this.quitarAcentos(filter.toUpperCase())) !== -1);
   }
   quitarAcentos(cadena: string): string{
-    const acentos: any = { 'á': 'a', 'é': 'e','í': 'i','ó': 'o' , 'ú' : 'u','Á': 'A','É': 'E','Í': 'I','Ó': 'O','Ú': 'U'};
+    const acentos: any = { 'Á': 'A','É': 'E','Í': 'I','Ó': 'O','Ú': 'U'};
     return cadena.split('').map( letra => acentos[letra] || letra).join('').toString();
   }
 }

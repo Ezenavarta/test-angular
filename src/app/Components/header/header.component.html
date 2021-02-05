@@ -1,9 +1,16 @@
-<header>
-    <div>
-        <input [(ngModel)]="filtro">
-        <button (click)="filtrar()">Buscar</button>
-        <button (click)="irAlCarrito()">
-            Carrito {{ cart }}
-        </button>
+<header class="header-container">
+    <div class="header">
+        <div class="busqueda">
+            <input [(ngModel)]="filtro">
+            <button (click)="filtrar()">BUSCAR</button>
+        </div>
+        <button class="carrito" (click)="irAlCarrito()">
+                CARRITO
+                <div *ngIf="cart > 0" class="amount">
+                    <span >
+                        {{ cart }}
+                    </span>
+                </div>
+            </button>
     </div>
 </header>
