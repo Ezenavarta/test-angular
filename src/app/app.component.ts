@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'test-angular';
+  cart = 0;
+  carritoActivo = false;
+
+  cambioEstadoCarrito(): void{
+    this.carritoActivo = !this.carritoActivo;
+  }
 }

@@ -1,0 +1,26 @@
+<ng-container *ngIf='carritoActivo == false else Carrito'>
+    <div *ngFor="let plan of planes, index as i">
+        <h2>
+            {{plan.nombre}}
+        </h2>
+        <p>Planes disponibles: </p>
+        <select (afterprint)="selectChangeHandler($event, i)" (change)="selectChangeHandler($event, i)">
+            <option hidden disabled selected value>Selecione un plan</option>
+            <option *ngFor="let periodo of plan.periodos, index as e" value="{{e}}">
+                {{periodo.periodo}} meses por {{periodo.valor | currency}}
+            </option>
+        </select>
+        <button *ngIf="selected[i]" (click)="agregar(i)" >Agregar al carrito</button>
+    </div>
+</ng-container>
+
+<ng-template #Carrito>
+    <div *ngFor="let plan of carrito">
+        <h2>
+            {{plan.nombre}}
+        </h2>
+        <p>
+            {{plan.periodo}} meses por {{plan.valor | currency}}
+        </p>
+    </div>
+</ng-template>
