@@ -10,7 +10,9 @@ export class HeaderComponent implements OnInit {
   @Input() cart = 0;
   @Input() carritoActivo = false;
   @Output() cambioEstadoCarrito = new EventEmitter();
+  @Output() buscar = new EventEmitter();
   nombre = 'soy el nombre';
+  filtro = '';
 
   constructor() {
     console.log('antes');
@@ -22,5 +24,8 @@ export class HeaderComponent implements OnInit {
 
   irAlCarrito(): void{
     this.cambioEstadoCarrito.emit();
+  }
+  filtrar(): void{
+    this.buscar.emit(this.filtro);
   }
 }

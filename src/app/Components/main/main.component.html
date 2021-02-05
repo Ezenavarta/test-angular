@@ -1,10 +1,10 @@
 <ng-container *ngIf='carritoActivo == false else Carrito'>
-    <div *ngFor="let plan of planes, index as i">
+    <div *ngFor="let plan of planes | filtroNombre: filtro, index as i">
         <h2>
             {{plan.nombre}}
         </h2>
         <p>Planes disponibles: </p>
-        <select (afterprint)="selectChangeHandler($event, i)" (change)="selectChangeHandler($event, i)">
+        <select (change)="selectChangeHandler($event, i)">
             <option hidden disabled selected value>Selecione un plan</option>
             <option *ngFor="let periodo of plan.periodos, index as e" value="{{e}}">
                 {{periodo.periodo}} meses por {{periodo.valor | currency}}
@@ -15,12 +15,13 @@
 </ng-container>
 
 <ng-template #Carrito>
-    <div *ngFor="let plan of carrito">
+    <div *ngFor="let plan of carrito | filtroNombre: filtro, index as i">
         <h2>
             {{plan.nombre}}
         </h2>
         <p>
             {{plan.periodo}} meses por {{plan.valor | currency}}
         </p>
+        <button (click)="eliminarItem(i)" >Eliminar</button>
     </div>
 </ng-template>

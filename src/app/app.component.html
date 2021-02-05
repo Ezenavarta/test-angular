@@ -1,2 +1,5 @@
-<app-header (cambioEstadoCarrito)="cambioEstadoCarrito()" [cart]="cart" [carritoActivo]="carritoActivo"></app-header>
-<app-main [carritoActivo]="carritoActivo"></app-main>
+<app-header (buscar)="buscar($event)" (cambioEstadoCarrito)="cambioEstadoCarrito()" [cart]="cart"
+  [carritoActivo]="carritoActivo">
+</app-header>
+<app-main [filtro]="filtro" [carritoActivo]="carritoActivo" (restarAlCarrito)="restarAlCarrito()"
+  (sumarAlCarrito)="sumarAlCarrito()"></app-main>

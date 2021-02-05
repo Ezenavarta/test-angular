@@ -1,7 +1,7 @@
 <header>
     <div>
-        <input>
-        <button>Buscar</button>
+        <input [(ngModel)]="filtro">
+        <button (click)="filtrar()">Buscar</button>
         <button (click)="irAlCarrito()">
             Carrito {{ cart }}
         </button>

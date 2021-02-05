@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { MainComponent } from './Components/main/main.component';
 import { FormsModule } from '@angular/forms';
+import { FiltroNombrePipe } from './pipes/filtro-nombre.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainComponent
+    MainComponent,
+    FiltroNombrePipe
   ],
   imports: [
     BrowserModule,

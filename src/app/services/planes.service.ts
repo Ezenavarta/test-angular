@@ -9,22 +9,19 @@ export class PlanesService {
 
   constructor(private http: HttpClient) {
   }
-  getPlanes() {
-    return this.http.get<Planes>(
-      'http://c1300044.ferozo.com/getListado.php'
-      );
+  getPlanes(): any {
+    return this.http.get<Planes>('http://c1300044.ferozo.com/getListado.php');
   }
-  getCarrito(){
-    return this.http.get<GetCart>(
-      'http://c1300044.ferozo.com/getListadoCarrito.php'
-      );
+  getCarrito(): any {
+    return this.http.get<GetCart>('http://c1300044.ferozo.com/getListadoCarrito.php?' + Math.random());
+    // una chanchadita para que recargue el carrito*/
   }
-  addPlanToCart(plan: string, period: number){
+  addPlanToCart(plan: string, period: number): any {
     return this.http.get<AddPlanResult>(
-      'http://c1300044.ferozo.com/agregarItem.php?plan=' + plan + '&periodo=' + period
+      'http://c1300044.ferozo.com/agregarItem.php?plan=' + plan + '&periodo=' + period + '&' + Math.random()
       );
   }
-  deleteItem(idItem: number){
+  deleteItem(idItem: number): any {
     return this.http.get<DeleteItem>('http://c1300044.ferozo.com/removerItem.php?id_producto=' + idItem);
   }
 
